@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="parties-papi-requestFlow" doc:id="fbfba587-b02a-4dc8-87b2-dc99ebc5ed83" >
+		<http:request method="POST" doc:name="Request" doc:id="848adffc-ef78-4813-b176-481a96d2e841" url="https://anypoint.mulesoft.com/mocking/api/v1/links/078bc6d2-732f-49d4-a755-79a0bb6db649/creditReports">
+			<http:body><![CDATA[#[output application/json
+---
+{
+  "business": {
+    "name": "Openlogix",
+    "alias": "",
+    "address": "100 Main Street",
+    "city": "Phoenix",
+    "state": "AZ",
+    "zip": "85032",
+    "phone": "1233211234",
+    "federalTaxId": "1231123",
+    "companyId": "080938266",
+    "financials": {
+      "cashAndEquivalents": 15000,
+      "totalAssets": 123000,
+      "totalLiabilities": 50000,
+      "netWorth": 75000,
+      "totalSales": 480000,
+      "earningsBeforeInterestAndTaxes": 50000,
+      "annualInterestExpense": 4700,
+      "currentCheckingAccountBalance": 8000
+    }
+  },
+  "principals": [
+    {
+      "salutation": "Mr.",
+      "firstName": "John",
+      "middleInitial": "",
+      "lastName": "Oscar",
+      "maternalSurname": "",
+      "nameSuffix": "",
+      "ssn": "123456789",
+      "birthDate": "2022-05-23",
+      "currentAddress": {
+        "address": "1 CRAWFORD PY #305",
+        "city": "PORTSMOUTH",
+        "state": "VA",
+        "zip": "23704",
+        "monthsAtAddress": 10,
+        "residencyType": "Owns"
+      },
+      "previousAddress": {
+        "address": "",
+        "city": "",
+        "state": "",
+        "zip": "",
+        "monthsAtAddress": 1,
+        "residencyType": "Owns"
+      },
+      "percentOwnership": 90,
+      "yearsAsCurrentOwner": 888,
+      "monthlyIncome": 200000,
+      "netWorth": 8182,
+      "checkingAccount": "",
+      "savingsAccount": "",
+      "freezeAccessCode": ""
+    }
+  ],
+  "credit": {
+    "pull": "soft",
+    "pullType": "AccountReview",
+    "pullPurpose": "Loan",
+    "loanAmount": 64000,
+    "loanTerm": 640,
+    "monthlyPaymentAmount": 64000,
+    "downPaymentAmount": 9999999,
+    "loanPurpose": "TestingSystem"
+  },
+  "reportFormat": [
+    "PDF"
+  ]
+}]]]></http:body>
+			<http:headers><![CDATA[#[output application/java
+---
+{
+	client_id: "raghavendra",
+client_secret: "raghav"
+}]]]></http:headers>
+		</http:request>
+	</flow>
+</mule>
